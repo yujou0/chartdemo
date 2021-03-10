@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Chart demo</title>
+</head>
+<style>
+    html, body {
+    overflow-x: hidden;
+    margin: 0;  
+    padding: 0;}
+    a{
+        color: #000;
+    }
+
+</style>
+<body>
+    <h1 class="text-center p-3 bg-dark text-white m-0">Chart demo</h1>
+    <menu class="p-3 d-flex justify-content-around align-items-center bg-info m-0">
+        <a href="#myChart">Barchart</a>
+        <a href="#myPieChart">Piechart</a>
+        <a href="#myHorizontalBarChart">HorizontalBarchart</a>
+        <a href="#myLineChart">Linechart</a>
+        <a href="#myDoughnutChart">Doughnutchart</a>
+        <a href="#myRadarChart">Radarchart</a>
+        <a href="#myPolarAreaChart">PolarAreachart</a>
+    </menu>
+    <div class="container">
+        <h5>Barchart</h5>
+        <canvas data-aos="fade-up" id="myChart"></canvas>
+        <hr>
+        <h5>Piechart</h5>
+        <canvas data-aos="fade-up" id="myPieChart"></canvas>
+        <hr>
+        <h5>HorizontalBarchart</h5>
+        <canvas data-aos="fade-up" id="myHorizontalBarChart"></canvas>
+        <hr>
+        <h5>Linechart</h5>
+        <canvas data-aos="fade-up" id="myLineChart"></canvas>
+        <hr>
+        <h5>Doughnutchart</h5>
+        <canvas data-aos="fade-up" id="myDoughnutChart"></canvas>
+        <hr>
+        <h5>Radarchart</h5>
+        <canvas data-aos="fade-up" id="myRadarChart"></canvas>
+        <hr>
+        <h5>PolarAreachart</h5>
+        <canvas data-aos="fade-up" id="myPolarAreaChart"></canvas>
+    </div>
+    <footer class="site-footer">
+        <div class="container">
+          <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+              <div>
+                <p class="copyright"><small>
+                    Copyright &copy;
+                    2021 All rights reserved | This page is made
+                    with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a
+                      href="https://github.com/1917kun?tab=repositories" target="_blank">YujouLin</a>
+                  </small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    <script>
+        AOS.init();
+
+        // bar chart
+        let myChart = document.getElementById('myChart').getContext('2d');
+        // global options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopChart = new Chart(myChart, {
+            type: 'bar', //bar ,horizontalbar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['Boston','Worcester','Springfield','Lowll','Cambridge','New Bedford'],
+                datasets:[{
+                    label:'Population',
+                    data:[
+                        617594,
+                        181045,
+                        1533060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:'#000'
+                }]
+            },
+            options:{
+                title:{
+                    display:true,
+                    text:'Largest Cities In Massachusetts',
+                    fontSize:25
+                },
+                legend:{
+                    display:false,
+                    position: 'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                }
+            }
+        });
+ 
+
+        // pie chart
+        let myPieChart = document.getElementById('myPieChart').getContext('2d');
+
+        // global options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopPieChart = new Chart(myPieChart, {
+            type: 'pie', //bar ,horizontalbar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['Boston','Worcester','Springfield','Lowll','Cambridge','New Bedford'],
+                datasets:[{
+                    label:'Population',
+                    data:[
+                        617594,
+                        181045,
+                        1533060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:'#000'
+                }]
+            },
+            options:{
+                title:{
+                    display:true,
+                    text:'Largest Cities In Massachusetts',
+                    fontSize:25
+                },
+                legend:{
+                    display:true,
+                    position: 'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                }
+            }
+        });
+
+
+        // HorizontalBar chart
+        let myHorizontalBarChart = document.getElementById('myHorizontalBarChart').getContext('2d');
+
+        // global options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopHorizontalBarChart = new Chart(myHorizontalBarChart, {
+            type: 'horizontalBar', //bar ,horizontalbar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['Boston','Worcester','Springfield','Lowll','Cambridge','New Bedford'],
+                datasets:[{
+                    label:'Population',
+                    data:[
+                        617594,
+                        181045,
+                        1533060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:'#000'
+                }]
+            },
+            options:{
+                title:{
+                    display:true,
+                    text:'Largest Cities In Massachusetts',
+                    fontSize:25
+                },
+                legend:{
+                    display:true,
+                    position: 'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                }
+            }
+        });
+
+        // line chart
+        let myLineChart = document.getElementById('myLineChart').getContext('2d');
+
+        // global options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopLineChart = new Chart(myLineChart, {
+            type: 'line', //bar ,horizontalbar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['Boston','Worcester','Springfield','Lowll','Cambridge','New Bedford'],
+                datasets:[{
+                    label:'Population',
+                    data:[
+                        617594,
+                        181045,
+                        1533060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:'#000'
+                }]
+            },
+            options:{
+                title:{
+                    display:true,
+                    text:'Largest Cities In Massachusetts',
+                    fontSize:25
+                },
+                legend:{
+                    display:true,
+                    position: 'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                }
+            }
+        });
+
+        // doughnut chart
+        let myDoughnutChart = document.getElementById('myDoughnutChart').getContext('2d');
+
+        // global options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopDoughnutChart = new Chart(myDoughnutChart, {
+            type: 'doughnut', //bar ,horizontalbar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['Boston','Worcester','Springfield','Lowll','Cambridge','New Bedford'],
+                datasets:[{
+                    label:'Population',
+                    data:[
+                        617594,
+                        181045,
+                        1533060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:'#000'
+                }]
+            },
+            options:{
+                title:{
+                    display:true,
+                    text:'Largest Cities In Massachusetts',
+                    fontSize:25
+                },
+                legend:{
+                    display:true,
+                    position: 'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                }
+            }
+        });
+
+        // radar chart
+        let myRadarChart = document.getElementById('myRadarChart').getContext('2d');
+
+        // global options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopRadarChart = new Chart(myRadarChart, {
+            type: 'radar', //bar ,horizontalbar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['Boston','Worcester','Springfield','Lowll','Cambridge','New Bedford'],
+                datasets:[{
+                    label:'Population',
+                    data:[
+                        617594,
+                        181045,
+                        1533060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:'#000'
+                }]
+            },
+            options:{
+                title:{
+                    display:true,
+                    text:'Largest Cities In Massachusetts',
+                    fontSize:25
+                },
+                legend:{
+                    display:true,
+                    position: 'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                }
+            }
+        });
+
+        // PolarArea chart
+        let myPolarAreaChart = document.getElementById('myPolarAreaChart').getContext('2d');
+
+        // global options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let massPopPolarAreaChart = new Chart(myPolarAreaChart, {
+            type: 'polarArea', //bar ,horizontalbar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['Boston','Worcester','Springfield','Lowll','Cambridge','New Bedford'],
+                datasets:[{
+                    label:'Population',
+                    data:[
+                        617594,
+                        181045,
+                        1533060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:'#000'
+                }]
+            },
+            options:{
+                title:{
+                    display:true,
+                    text:'Largest Cities In Massachusetts',
+                    fontSize:25
+                },
+                legend:{
+                    display:true,
+                    position: 'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                }
+            }
+        });
+
+
+ </script>
+</body>
+</html>
